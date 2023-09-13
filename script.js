@@ -168,6 +168,7 @@ function drawScore() {
 }
 function drawGameOver() {
   gameOverAudio.play();
+  ctx.save();
   ctx.textAlign = "center";
   ctx.fillStyle = "black";
   ctx.fillText(
@@ -182,6 +183,7 @@ function drawGameOver() {
     canvas.width / 2 - 3,
     canvas.height / 2 - 3
   );
+  ctx.restore();
 
   const button = document.createElement("button");
   button.innerHTML = "Restart";
@@ -189,7 +191,6 @@ function drawGameOver() {
   button.addEventListener("click", () => {
     gameOver = false;
     score = 0;
-    console.log(gameOver);
     timestamp = 0;
     animate(0);
     timeToNextFrame = 0;
